@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { signIn } from '@/lib/auth';
+import { useNavigate } from 'react-router-dom';
 
 export function LoginPage() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
@@ -21,6 +23,7 @@ export function LoginPage() {
       }
       // Handle successful login - store tokens, redirect, etc.
       console.log('Login successful:', result.data);
+      navigate('/cadastro');
     } catch (err) {
       setError('Ocorreu um erro ao tentar fazer login. Tente novamente.');
     } finally {
